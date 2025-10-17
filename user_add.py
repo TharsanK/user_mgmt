@@ -9,7 +9,7 @@ import getopt  # Module for getting options
 
 def user_add(username, shell, groups, home=False):
     cmd = ['useradd']
-    if home == True:
+    if home:
         cmd.append('-m')
     cmd.append('-G')
     for i in groups:
@@ -38,12 +38,16 @@ except getopt.GetoptError as err:
     sys.exit(2)
 
 # PROCESSING ARGUMENTS AND OPTIONS
+
 # Required Variables
 home = False
 groups = []
 shell = None
 username = None
 
+# -m --> home directory creation
+# -G --> for the list of groups to be appended to
+# -s --> for the base shell of the user
 for i, v in opts:
     if i == "-m":
         home = True

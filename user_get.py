@@ -7,7 +7,8 @@ import sys
 def user_get():
     # Path to the /etc/shadow file where the user information is stored
     # For format of the file check below given link
-    # The /etc/passwd is more safe to use because encrypted pass is not stored there
+    # The /etc/passwd is more safe to use because encrypted pass is not
+    # stored there
     # https://man.archlinux.org/man/shadow.5.en
     # https://man.archlinux.org/man/passwd.5
     path1 = "/etc/passwd"

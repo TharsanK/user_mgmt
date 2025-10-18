@@ -1,12 +1,10 @@
 #!/usr/bin/python
 
-import subprocess  # Module for executing terminal commands
-import sys  # Module for collecting args
-import getopt  # Module for getting options
+
+import subprocess
+
 
 # The Main Function
-
-
 def user_add(username, shell, groups, home=False):
     cmd = ['useradd']
     if home:
@@ -22,42 +20,3 @@ def user_add(username, shell, groups, home=False):
 # and sys.argv and then construct a proper useradd command stored
 # in the cmd variable which is then executed using the subprocess
 # module
-
-
-# SETTING ARGUMENT AND OPTIONS
-argv = sys.argv[1:]
-short = "ms:G:"
-long = ["shell=", "groups="]
-
-# COLLECTING ARGUMENTS AND OPTIONS
-try:
-    opts, args = getopt.getopt(argv, short, long)
-except getopt.GetoptError as err:
-    print(err)
-    print("Please read the man page")
-    sys.exit(2)
-
-# PROCESSING ARGUMENTS AND OPTIONS
-
-# Required Variables
-home = False
-groups = []
-shell = None
-username = None
-
-# -m --> home directory creation
-# -G --> for the list of groups to be appended to
-# -s --> for the base shell of the user
-for i, v in opts:
-    if i == "-m":
-        home = True
-
-    elif i == "-G":
-        for j in v.split(","):
-            groups.append(j)
-
-    elif i == "-s":
-        shell = v
-
-username = args[0]
-user_add(username, shell, groups, home)

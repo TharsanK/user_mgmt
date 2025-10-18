@@ -1,8 +1,5 @@
 #!/usr/bin/python
 
-# Import for CLI handling
-import sys
-
 
 def user_get():
     # Path to the /etc/shadow file where the user information is stored
@@ -31,25 +28,3 @@ def user_get():
             elif int(d[2]) >= 1000 or ('nologin' not in d[6]):
                 u.append(d[0])
     return (u, b)
-
-
-# Utilizing the function
-u, b = user_get()
-
-# CLI Handling
-if len(sys.argv) >= 2:
-    if sys.argv[1] == "-u" or sys.argv[1] == "-U":
-        # Printing the user stored
-        print("USER IN THE SYSTEM")
-        print("=================")
-        for i in u:
-            print(i)
-        print("==================")
-    elif sys.argv[1] == "-b" or sys.argv[1] == "-B":
-        print("BACKGROUND USERS")
-        print("==================")
-        for i in b:
-            print(i)
-        print("==================")
-else:
-    pass

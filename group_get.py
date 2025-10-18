@@ -1,8 +1,5 @@
 #!/usr/bin/python
 
-from rich.console import Console
-from rich.table import Table
-
 
 def group_get():
     # Path to the /etc/group file where the user information is stored
@@ -25,19 +22,3 @@ def group_get():
             d = i.split(":")
             g.append((d[0], d[2], d[3]))
     return g
-
-
-# Using the function
-data = group_get()
-
-# Beautifying the output
-con = Console()
-tab = Table()
-tab.add_column("GROUP NAME")
-tab.add_column("GROUP ID(GID)")
-tab.add_column("USERS")
-
-for i in data:
-    tab.add_row(i[0], i[1], i[2])
-
-con.print(tab)
